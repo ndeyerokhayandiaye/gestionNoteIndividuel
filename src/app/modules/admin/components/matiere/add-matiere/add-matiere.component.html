@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="alert alert-primary text-center" role="alert">
+        Gestion des matiere
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Libellé</th>
+                        <th scope="col">Etat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of matieres; let i = index">
+                        <th scope="row">{{i + 1}}</th>
+                        <td>{{item.libelle}}</td>
+                        <td  class="btn-go-matere">
+                            <button *ngIf="item.etat" type="button" class="btn-change btn btn-danger" (click)="changeState(i)">Desactiver</button>
+                            <button *ngIf="!item.etat" type="button" class="btn-change btn btn-success" (click)="changeState(i)">Activer</button>
+                            <button type="button" class="btn btn-warning" (click)="editeurMatiere(i)">Modifier</button>
+                        </td>
+                    </tr>
+                    <tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col">
+            <div class="formulaire" *ngIf="!editMatiere">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="libelle" />
+                    <label for="floatingInput">matiere</label>
+                </div>
+                <div class="text-center d-flex justify-content-around mt-4">
+                    <button class="btn btn-danger w-25">Annuler</button>
+                    <button class="btn btn-primary w-25" (click)="addMatiere()">
+                        <!-- routerLink="../listApprenant" -->
+                        Ajouter
+                    </button>
+                </div>
+            </div>
+            <div class="formulaire" *ngIf="editMatiere">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control-edit form-control" id="floatingInput" *ngFor="let item of matiereEdit" placeholder="" [(ngModel)]="item.libelle" />
+                    <label for="floatingInput">matiere</label>
+                </div>
+                <div class="text-center d-flex justify-content-around mt-4">
+                    <button class="btn btn-danger w-25" (click)="resetForm()">Annuler</button>
+                    <button class="btn btn-primary w-25" (click)="addMatiere()">
+                        <!-- routerLink="../listApprenant" -->
+                        Enregistrer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

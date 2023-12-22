@@ -1,0 +1,123 @@
+<!-- Affichage de la liste des évaluations -->
+<table class="table container" *ngIf="!modifierEvaluation">
+    <thead>
+        <tr>
+            <th scope="col">Évaluation</th>
+            <th scope="col">Année Académique</th>
+            <th scope="col">Classe</th>
+            <th scope="col">Matière</th>
+            <th scope="col">Type</th>
+            <th scope="col">Date</th>
+            <th scope="col">État</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let elementEvaluation of listeEvaluation; let i = index">
+        <tr>
+            <th>{{elementEvaluation.idEvaluation}}</th>
+            <td>{{elementEvaluation.anneeAcademic}}</td>
+            <td>{{elementEvaluation.classe}}</td>
+            <td>{{elementEvaluation.matiere}}</td>
+            <td>{{elementEvaluation.type}}</td>
+            <td>{{elementEvaluation.date}}</td>
+            <td>{{elementEvaluation.etat}}</td>
+            <td>
+                <button type="button" class="btn btn-warning" (click)="evaluationModifiee(i)">Modifier</button>
+                <button type="button" class="btn btn-success" (click)="archiverEvaluation(i)">Archiver</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Formulaire de modification d'une évaluation -->
+<div class="container" *ngIf="modifierEvaluation">
+    <div class="programme_evaluation m-5 container" *ngFor="let item of saveTable">
+        <div class="enrollHeader">
+            <h4>Modifier une Évaluation</h4>
+        </div>
+        <section class="enroll">
+            <form action="#" class="form">
+                <div class="input-box">
+                    <label>Année Académique</label>
+                    <div class="column">
+                        <div class="select-box">
+                            <select name="select1" [(ngModel)]="item.anneeAcademic">
+                                <option value="2023-2024">2023-2024</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="input-box">
+                    <label>Semestre</label>
+                    <div class="column">
+                        <div class="select-box">
+                            <select name="select2" [(ngModel)]="item.semestre">
+                                <option value="Semestre 1">Semestre 1</option>
+                                <option value="Semestre 2">Semestre 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label>Classe</label>
+                    <div class="column">
+                        <div class="select-box">
+                            <select name="select3" [(ngModel)]="item.classe">
+                                <option value="Second">Second</option>
+                                <option value="Premiere">Première</option>
+                                <option value="Terminal">Terminal</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="input-box">
+                        <label>Date Évaluation</label>
+                        <input name="date" type="date" placeholder="Date" [(ngModel)]="item.date" required />
+                    </div>
+                </div>
+
+                <div class="input-box subject">
+                    <label>Matière</label>
+                    <div class="column">
+                        <div class="select-box">
+                            <select name="select4" [(ngModel)]="item.matiere">
+                                <option value="Maths">Maths</option>
+                                <option value="PC">PC</option>
+                                <option value="Anglais">Anglais</option>
+                                <option value="Français">Français</option>
+                            </select>
+                        </div>
+                        <div class="select-box">
+                            <select name="select5" [(ngModel)]="item.type">
+                                <option value="Examen">Examen</option>
+                                <option value="Devoir">Devoir</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label>État</label>
+                    <div class="column">
+                        <div class="select-box">
+                            <select name="select6" [(ngModel)]="item.etat">
+                                <option value="en cours">En cours</option>
+                                <option value="annulé">Annulé</option>
+                                <option value="Terminé">Terminé</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center d-flex">
+                    <button type="button" class="btnlast btn btn-primary me-3"
+                        (click)="enregistrerModification()">Enregistrer</button>
+                    <button type="button" class="btnlast btn btn-danger" (click)="retour()">Annuler</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="container">
+
+    <div class="alert alert-primary text-center" role="alert">
+        Ajout d'un formateur
+    </div>
+    
+    <div class="formulaire">
+        <!-- <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="matricule" />
+            <label for="floatingInput">Sexe</label>
+        </div> -->
+    
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="prenom" />
+            <label for="floatingInput">prenom</label>
+        </div>
+    
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="nom" />
+            <label for="floatingInput">nom</label>
+        </div>
+    
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="mail" />
+            <label for="floatingInput">email</label>
+        </div>
+    
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="tel" />
+            <label for="floatingInput">numero</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="image" />
+            <label for="floatingInput">photo(URL)</label>
+        </div>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="classes">
+            <option value="" >--selectionnez une classe--</option>
+            <option [value]="classe.nom" *ngFor="let classe of classesActives">{{classe.nom}}</option>
+        </select>
+        <br>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="matiere">
+            <option value="">--selectionnez une matiere--</option>
+            <option [value]="item.libelle" *ngFor="let item of listMatieres">{{item.libelle}}</option>
+        </select>
+    
+        <div class="text-center d-flex justify-content-around mt-4">
+            <button class="btn btn-danger w-25">Annuler</button>
+            <button class="btn btn-primary w-25" (click)="ajouterProfesseur()">
+                <!-- routerLink="../listApprenant" -->
+                Ajouter
+            </button>
+        </div>
+    </div>
+</div>
+

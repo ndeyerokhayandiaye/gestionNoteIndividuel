@@ -1,0 +1,76 @@
+.sidebar {
+  height: 100vh;
+  width: 300px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  text-align: center;
+  background-color: #3b71ca;
+}
+
+.sidebar .logo {
+  height: 150px;
+  margin-bottom: 50px;
+}
+.sidebar .logo img {
+  height: 100%;
+  // background-color: rgb(23, 23, 29);
+}
+.sidebar .logo span {
+  font-weight: bold;
+  text-align: center;
+  font-size: 25px;
+  // color: rgb(83, 83, 173);
+  color: white;
+}
+
+.sidebar-items .sidebar-item,.dashboard{
+  text-align: start;
+  padding-left: 10px;
+  height: 35px;
+  // background-color: gray;
+  overflow: hidden;
+  margin-bottom: 10px;
+  transition: 0.8s ease-in;
+  cursor: pointer;
+}
+.sidebar-items .sidebar-item:hover {
+  height: 80px;
+}
+.sidebar-items .sidebar-item span,.dashboard span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.sidebar-items .sidebar-item i ,.dashboard i{
+  color: white;
+}
+
+.link-bloc {
+  text-align: start;
+  padding-left: 40px;
+}
+
+.link-bloc #link {
+  color: white;
+  font-size: 15px;
+}
+.link-bloc #link:hover {
+  color: #3b71ca;
+  background-color: white;
+  padding: 0 20px;
+}
+
+// right bloc for  all others components
+
+.contenu {
+  height: 100vh;
+  background-color: red;
+  width: 80%;
+}
+
+// logout icon
+.logout {
+  cursor: pointer;
+  color: #ffffff;
+}

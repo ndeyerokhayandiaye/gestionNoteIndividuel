@@ -1,0 +1,311 @@
+<div class="container-fluid" *ngIf="!editProf && !showDetails">
+    <div class="fixed-alert alert alert-primary text-center" role="alert">
+        Listes des formateurs
+    </div>
+    <div class="nofix row">
+        <!-- Lister les professeurs -->
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="align-items-center row">
+                            <div class="col-lg-8">
+                                <div class="mb-3 mb-lg-0">
+                                    <h6 class="fs-16 mb-0">
+                                        <!-- input search -->
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="candidate-list-widgets">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="selection-widget">
+                                                <select class="form-select" data-trigger="true"
+                                                    name="choices-single-filter-orderby"
+                                                    id="choices-single-filter-orderby"
+                                                    aria-label="Default select example" [(ngModel)]="filreClass">
+                                                    <option value="">Par defaut</option>
+                                                    <option value="sde">Second</option>
+                                                    <option value="pre">Premier</option>
+                                                    <option value="ter">Terminale</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="selection-widget mt-2 mt-lg-0">
+                                                <select class="form-select" data-trigger="true"
+                                                    name="choices-candidate-page" id="choices-candidate-page"
+                                                    aria-label="Default select example">
+                                                    <option value="df">Tous</option>
+                                                    <option value="ne" (click)="filtreAz()">A - Z</option>
+                                                    <option value="ne">Z - A</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="candidate-list" *ngFor="let item of listeprofesseurs; let i = index">
+                            <div class="candidate-list-box bookmark-post card mt-4">
+                                <div class="p-4 card-body">
+                                    <div class="align-items-center row">
+                                        <div class="col-auto">
+                                            <div class="candidate-list-images">
+                                                <a href="#"><img src="{{item.image}}" alt=""
+                                                        class="avatar-md img-thumbnail rounded-circle" /></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <div class="candidate-list-content mt-3 mt-lg-0">
+                                                <h5 class="fs-19 mb-0">
+                                                    <a class="primary-link" href="#">{{item.prenom}}
+                                                        {{item.nom}}</a><span class="badge bg-warning ms-1"></span>
+                                                </h5>
+                                                <ul class="list-inline mb-0 text-muted mt-2">
+                                                    <li class="list-inline-item"><i class="mdi mdi-map-marker"></i>{{item.matiere}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
+                                                <span class="badge bg-soft-secondary fs-14 mt-1">{{item.mail}}</span>
+                                                <span class="badge bg-soft-secondary fs-14 mt-1">{{item.tel}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="favorite-icon">
+                                        <a *ngIf="item.etat" (click)="changeState(i)" style="cursor: pointer;"><i
+                                                class="mdi mdi-heart fs-18">Desactiver</i></a>
+                                        <a class="mdi-2" *ngIf="!item.etat" (click)="changeState(i)" style="cursor: pointer;"><i
+                                                class="mdi mdi-heart fs-18">Activer</i></a>
+                                        <a (click)="goDetails(i)" style="cursor: pointer;"><i
+                                                class="mdi mdi-heart fs-18">details</i></a>
+                                        <a class="mdi-4" (click)="editeurProf(i)" style="cursor: pointer;"><i
+                                                class="mdi mdi-heart fs-18">modifier</i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mt-4 pt-2 col-lg-12">
+                        <nav aria-label="Page navigation example">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+</div>
+
+<div class="container-fluid" *ngIf="editProf">
+
+    <div class="row" *ngFor="let item of editprofesseurs">
+
+        <!-- Edit professeurs -->
+
+        <div class="alert alert-primary text-center" role="alert">
+            Modification du professeur {{item.prenom}} {{item.nom}}
+        </div>
+
+        <div class="formulaire">
+            <!-- <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="matricule" />
+                <label for="floatingInput">Sexe</label>
+            </div>  -->
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="prenom"/>
+                <label for="floatingInput">prenom</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="nom" />
+                <label for="floatingInput">nom</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="mail" />
+                <label for="floatingInput">email</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="tel" />
+                <label for="floatingInput">numero</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="image" />
+                <label for="floatingInput">photo(URL)</label>
+            </div>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="classes">
+                <option value="">--selectionnez une classe--</option>
+                <option value="seconde">Seconde</option>
+                <option value="premiere">Premiere</option>
+                <option value="terminale">Terminale</option>
+            </select>
+            <br>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="matiere">
+                <option value="">--selectionnez une matiere--</option>
+                <option value="math">Math</option>
+                <option value="pc">PC</option>
+                <option value="eps">EPS</option>
+            </select>
+
+            <div class="text-center d-flex justify-content-around mt-4">
+                <button class="btn btn-danger w-25" (click)="resetForm()">Annuler</button>
+                <button class="btn btn-primary w-25" (click)="manipEdit()">
+                    Enregistrer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Details -->
+<div class="container-fluid" *ngIf="showDetails">
+    <div class="row" *ngFor="let item of editprofesseurs">
+        <div class="fixed-alert alert alert-primary text-center" role="alert">
+            Details de {{item.prenom}} {{item.nom}}
+        </div>
+            <section class="general" style="background-color: #ffffff; justify-content: center;">
+                <div class="row d-flex align-items-center justify-content-center h-100">
+                    <div class="col col-xl-10">
+                        <div class="card mb-5  w-100" style="border-radius: 15px;">
+                            <div class="card-body p-4 w-100">
+                                <div class="d-flex gap-5">
+                                    <div>
+                                        <div class="card mb-3">
+                                            <div class="row g-5 align-items-center">
+                                                <div class="col-md-4">
+                                                    <img [src]="item.image" class="img-fluid rounded-start" alt="...">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="profil-icon card-body">
+                                                        <h5 class="titre-card card-title mb-3">{{item.prenom}} {{item.nom}}</h5><br>
+                                                        <h5><span class="classe-prof">Matieres(s) :
+                                                        </span>{{item.matiere}}</h5>
+                                                        <p class=" card-text"><span class="classe-prof">Classe(s) :
+                                                            </span>{{item.classes}}</p>
+                                                        <p class="card-text"><span class="classe-prof">Adresse mail :
+                                                        </span><small class="text-muted"><span class="classe-prof">{{item.mail}}</span></small></p>
+                                                        <p class="card-text"><span class="classe-prof">Telephone :
+                                                        </span><small class="text-muted"><span class="classe-prof">{{item.tel}}</span></small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-4">
+                                <div class="services d-flex justify-content-start">
+                                    <p class="mb-0 text-uppercase"><i class="fa-solid fa-flag"></i> <span class="text-muted small">
+                                            compte <span class="etat" *ngIf="!prof">actif</span><span class="etat2"
+                                                *ngIf="prof">inactif</span></span>
+                                    </p>
+                                    <p class="mb-0 text-uppercase" (click)="showNote()"><i class="fas fa-solid fa-note-sticky"></i>
+                                        <span class="text-muted small"> les
+                                            notes des apprenants</span></p>
+                                    <p class="mb-0 text-uppercase" (click)="showEvaluation()"><i class="fas fa-solid fa-dna"></i>
+                                        <span class="text-muted small">
+                                            evaluation</span></p>
+                                </div>
+                            </div>
+                            <div class="container" *ngIf="switch == 1">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="main-box clearfix">
+                                            <div class="table-responsive">
+                                                <table class="table user-list">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center"><span>Apprenants</span></th>
+                                                            <th class="text-center"><span>Semestre 1</span></th>
+                                                            <th class="text-center"><span>Semestre 2</span></th>
+                                                            <th class="text-center"><span>Examens</span></th>
+                                                            <th class="text-center"><span>Détails</span></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                                                                    alt="">
+                                                                <h6>Thierno Habib Bah</h6>
+                                                                <span class="user-subhead">Second S2</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span class="label label-success">20</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span class="label label-success">20</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span class="label label-success">20</span>
+                                                            </td>
+                                                            <td style="width: 20%;" class="text-center">
+                                                                <a href="#" class="table-link">
+                                                                    <i class="fa-solid fa-circle-info"
+                                                                        style="font-size: 1.7em;"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <ul class="pagination pull-right">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 px-4">
+                                <table class="evaluations w-100" *ngIf="switch == 2">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Evaluation</th>
+                                            <th scope="col">Classe</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Etat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-group-divider">
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Devoir 1, Semestre 2</td>
+                                            <td>Seconde S2 G</td>
+                                            <td>21/10/2022</td>
+                                            <td>Fait</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+    </div>
+</div>

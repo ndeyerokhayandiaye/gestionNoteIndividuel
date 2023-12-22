@@ -1,0 +1,19 @@
+<div class="container connexion-bloc">
+  <div class="alert alert-primary text-center" role="alert">
+    Veuillez-vous connecter !!!
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="mail"> 
+    <label for="floatingInput">Email address</label>
+  </div>
+  <div class="form-floating">
+    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="password">
+    <label for="floatingPassword">Password</label>
+  </div>
+  <div>
+    <button class="btn btn-primary mt-3 w-100" (click)="connexion()">
+      Se connecter
+    </button>   
+  </div>
+</div>

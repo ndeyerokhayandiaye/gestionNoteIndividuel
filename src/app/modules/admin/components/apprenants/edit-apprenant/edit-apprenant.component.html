@@ -1,0 +1,88 @@
+<div class="alert alert-primary text-center" role="alert">
+  Modifiaction d'un apprenant
+</div>
+
+<div class="formulaire">
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="floatingInput"
+      placeholder=""
+      [(ngModel)]="matricule"
+    />
+    <label for="floatingInput">Matricule</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="floatingInput"
+      placeholder=""
+      [(ngModel)]="prenom"
+    />
+    <label for="floatingInput">prenom</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="floatingInput"
+      placeholder=""
+      [(ngModel)]="nom"
+    />
+    <label for="floatingInput">nom</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="floatingInput"
+      placeholder=""
+      [(ngModel)]="email"
+    />
+    <label for="floatingInput">email</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="floatingInput"
+      placeholder=""
+      [(ngModel)]="numero"
+    />
+    <label for="floatingInput">numero</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="floatingInput"
+      placeholder=""
+      [(ngModel)]="photo"
+    />
+    <label for="floatingInput">photo(URL)</label>
+  </div>
+  <select
+    class="form-select"
+    aria-label="Default select example"
+    [(ngModel)]="classe"
+  >
+  <option [value]="classe.nom" *ngFor="let classe of classes">{{classe.nom}}</option>
+  </select>
+
+  <div class="text-center d-flex justify-content-around mt-4">
+    <button class="btn btn-danger w-25" (click)="resetForm()">Annuler</button>
+    <button
+      class="btn btn-primary w-25"
+      (click)="verifierFormModif()"
+      >
+      <!-- routerLink="../listApprenant" -->
+      Modifier
+    </button>
+  </div>
+</div>

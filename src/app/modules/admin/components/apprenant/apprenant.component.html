@@ -1,0 +1,143 @@
+<!-- profil de l'apprenant qui est connecter  -->
+<div class="container shadow p-4" *ngIf="!showEvaluation">
+    <div class="profil-mini container">
+        <div class="card mb-3 shadow card-profil-apprenant" >
+            <div class="row g-0 ">
+              <div class="col-md-6 ">
+                 <img src="https://img.freepik.com/free-photo/young-successful-african-businessman-posing-dark_176420-4970.jpg?size=626&ext=jpg&ga=GA1.1.1764900026.1693144917&semt=ais" class="img-fluid img-card-apprenant-profil" alt="..."  name="imageApprenantProfil"> <!-- width="350px" -->
+              </div>
+              <div class="col-md-6" >
+                <div class="card-body">
+                  <h1 class="card-title nom-connecter-apprenant"> Nom Complet</h1>
+                  <p class="card-text"> <span class="fw-bold">Address email : </span>nomcomplet@ecole.com</p>
+                  <p class="card-text"> <span class="fw-bold">Classe : </span>1ére</p>
+                  <p class="card-text"> <span class="fw-bold">Telephone : </span>77 000 00 00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+       </div>
+    <!-- profil de l'apprenant qui est connecter  -->
+    <!-- debut carte des cours pour l'evaluation -->
+    <div class="container">
+      <div class="d-flex justify-content-between p-3">
+        <h4>La listes des évaluations</h4>
+        <div class="d-flex justify-content-end">
+          <input [(ngModel)]="termeDeRecherche" placeholder="Rechercher par nom" (input)="filtrerItems()" type="text" name="" id="" class="border border-dark-subtle">
+          <button class="bg-primary border-primary"><i class="fa-solid fa-magnifying-glass" style="color: #eee;"></i></button>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col" *ngFor="let item of itemsFiltres ? itemsFiltres : items">
+          <div class="card mb-3 shadow card-evaluation-apprenant">
+            <div class="card-body">
+              <h5 class="card-title"> {{ item.nom }}</h5>
+              <p class="card-text"> {{ item.description }}</p>
+              <div class="d-flex justify-content-end">
+                <button class="voir-note"(click)="afficherEvaluationMariere()">Voir evaluations</button>
+              </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- fin carte des cours pour l'evaluation -->
+   
+<!-- debut details voir note sur ce cour  -->
+<div class="profil-mini container p-4 shadow" *ngIf="showEvaluation" >
+    <button (click)="afficherEvaluationMariere()">retour</button>
+    <div class="col">
+      <div class="card mb-3 card-evaluation-apprenant" >
+        <div class="row g-0">
+          <div class="col-md-12" >
+            <div class="card-body">
+              <h1 class="card-title" >MATHEMATIQUE</h1>
+              <p class="card-text"><span class="fw-bold" >Profeseur : </span> Bobo Diallo</p>
+              <p class="card-text"><span class="fw-bold" >Class: </span> 1èreS</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+        <div class="d-flex justify-content-between">
+            <p class="fw-bold">Les notes de Mathematiques </p>
+            <select class="form-select w-25" aria-label="Default select example">
+               <option value="" class="fw-light">choix semestre</option>
+               <option value="">semestre 1</option>
+               <option value="">semestre 2</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span> <i class="fa-solid fa-house" style="color: #000000;"></i>Matiere</span></th>
+                                    <th><span><i class="fa-brands fa-typo3" style="color: #000000;"></i> Type</span></th>
+                                    <th><span><i class="fa-solid fa-tag" style="color: #000000;"></i>  Semestre</span></th>
+                                    <th><span><i class="fa-solid fa-hourglass-start" style="color: #000000;"></i> Date</span></th>
+                                    <th class=""><span>Status</span></th>
+                                    <th><i class="fa-solid fa-notes-medical" style="color: #000000;"></i> Note <span class="text-dark-emphasis">/20</span></th>
+                                    <th><span><i class="fa-solid fa-calendar" style="color: #000000;"></i> Année</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p class="">Mathematique</p>  
+                                    </td>
+                                    <td>
+                                      <p class="">Devoir</p>  
+                                  </td>
+                                    <td>
+                                      <p>1</p>  
+                                  </td>
+                                    <td>
+                                        06/10/2023
+                                    </td>
+                                    <td class="">
+                                        <span class="label label-default">Fait</span>
+                                    </td>
+                                    <td class="">
+                                        <p>18</p>
+                                    </td>
+                                    <td class="">
+                                        <p>2023-2024</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                      <p class="">Mathematique</p>  
+                                  </td>
+                                  <td>
+                                    <p class="">Devoir</p>  
+                                </td>
+                                  <td>
+                                    <p>1</p>  
+                                </td>
+                                  <td>
+                                      06/10/2023
+                                  </td>
+                                  <td class="">
+                                      <span class="label label-default">Fait</span>
+                                  </td>
+                                  <td class="">
+                                      <p>18</p>
+                                  </td>
+                                  <td class="">
+                                      <p>2023-2024</p>
+                                  </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- fin details voir note sur ce cour  -->

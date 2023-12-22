@@ -1,0 +1,45 @@
+<div class="dash-contanier">
+    <div class="left">
+        <div class="sidebar">
+            <div class="logo">
+                <!-- <span class=""> GestionNoteLogo </span> -->
+                <img src="assets/Capture-removebg-preview.png" alt="" />
+            </div>
+        
+            <div class="sidebar-items">
+                <div class="dashboard">
+                    <span routerLink="statistique">
+                        <i class="bi bi-grid-1x2-fill"></i> Dashboard
+                    </span>
+        
+                </div>
+                <div class="sidebar-item">
+                    <span>
+                        <i class="fa-solid fa-chalkboard-user"></i> Gestion Notes
+                    </span>
+                    <div class="link-bloc">
+                        <span id="link" routerLink="addnote">Ajouter</span> <br />
+                        <span id="link" routerLink="listProfesseur">Lister</span>
+                    </div>
+                </div>
+                <div class="sidebar-item">
+                    <span>
+                        <i class="fa-solid fa-graduation-cap"></i> Gestion Evaluations
+                    </span>
+                    <div class="link-bloc">
+                        <span id="link" routerLink="evaluation">Ajouter</span> <br />
+                        <span id="link" routerLink="listevaluation">Lister</span>
+                    </div>
+                </div>
+            </div>
+            <div class="logout">
+                <span href="login"><i class="bi bi-box-arrow-left"></i> Déconnexion</span>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <!-- <app-stattistique></app-stattistique> -->
+        <router-outlet></router-outlet>
+        <!-- <app-test></app-test> -->
+    </div>
+</div>

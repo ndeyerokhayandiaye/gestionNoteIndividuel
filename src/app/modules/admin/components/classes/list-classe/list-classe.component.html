@@ -1,0 +1,25 @@
+<div class="alert alert-primary text-center" role="alert">
+  Listes des classes
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Description</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="list" *ngFor="let classe of classes">
+      <td>{{classe.nom}}</td>
+      <td>{{classe.description}}</td>
+      <td class="" id="actions">
+        <button class="btn btn-primary" routerLink="../detailsClasse">Détails</button>
+        <button class="btn btn-warning text-white"  [routerLink]="['../modifierClasse',classe.id]">Modifier</button>
+        <button class="btn btn-danger" *ngIf="classe.etat=='actif'" (click)="activeDesactive('desactiver',classe.id)">Désactiver</button>
+        <button class="btn btn-success" *ngIf="classe.etat=='desactif'" (click)="activeDesactive('activer',classe.id)">Activer</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>

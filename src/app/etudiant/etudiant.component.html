@@ -1,0 +1,39 @@
+<!-- etudiant.component.html -->
+
+<div class="alert alert-primary text-center p-3" role="alert">
+    Notes de l'étudiant
+  </div>
+  
+  <div class="secondCard m-5">
+    <div class="sectionNotes m-5">
+      <h4 class="mt-5 p-2">Notes de l'étudiant</h4>
+  
+      <div *ngIf="etudiant">
+        <h2>{{ etudiant.prenom }} {{ etudiant.nom }}</h2>
+  
+        <div *ngIf="etudiant.note !== undefined">
+          <h3 class="mt-3">Note</h3>
+          <table class="table mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ etudiant.note }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div *ngIf="etudiant.note === undefined" class="mt-3">
+          <p>Aucune note disponible pour l'étudiant.</p>
+        </div>
+      </div>
+  
+      <div *ngIf="!etudiant" class="mt-3">
+        <p>Aucun étudiant trouvé.</p>
+      </div>
+    </div>
+  </div>

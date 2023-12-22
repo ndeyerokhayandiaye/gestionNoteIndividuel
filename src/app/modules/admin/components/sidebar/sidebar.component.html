@@ -1,0 +1,56 @@
+<div class="sidebar">
+  <div class="logo">
+    <!-- <span class=""> GestionNoteLogo </span> -->
+    <img src="assets/Capture-removebg-preview.png" alt="" />
+  </div>
+
+  <div class="sidebar-items">
+    <div class="dashboard">
+      <span routerLink="statistique">
+        <i class="bi bi-grid-1x2-fill"></i> Dashboard
+      </span>
+    </div>
+    <div class="sidebar-item">
+      <span>
+        <i class="fa-solid fa-chalkboard-user"></i> Gestion Formateurs
+      </span>
+      <div class="link-bloc">
+        <span id="link" routerLink="addProfesseur">Ajouter</span> <br />
+        <span id="link" routerLink="listProfesseur">Lister</span>
+      </div>
+    </div>
+    <div class="sidebar-item">
+      <span>
+        <i class="fa-solid fa-graduation-cap"></i> Gestion Apprenants
+      </span>
+      <div class="link-bloc">
+        <span id="link" routerLink="addApprenant">Ajouter</span> <br />
+        <span id="link" routerLink="listApprenant">Lister</span>
+      </div>
+    </div>
+    <div class="sidebar-item">
+      <span> <i class="fa-solid fa-note-sticky"></i> Gestion Evaluation </span>
+      <div class="link-bloc">
+        <span id="link">Lister</span>
+      </div>
+    </div>
+    <div class="sidebar-item">
+      <span> <i class="bi bi-hospital"></i> Gestion Classe </span>
+      <div class="link-bloc">
+        <span id="link" routerLink="addClasse">Ajouter</span> <br />
+        <span id="link" routerLink="listClasse">Lister</span>
+      </div>
+    </div>
+    <div class="sidebar-item">
+      <span> <i class="bi bi-infinity"></i> Gestion Matière </span>
+      <div class="link-bloc">
+        <span id="link" routerLink="addMatiere">Ajouter</span> <br />
+      </div>
+    </div>
+  </div>
+  <div class="logout">
+    <span routerLink="login"
+      ><i class="bi bi-box-arrow-left"></i> Déconnexion</span
+    >
+  </div>
+</div>

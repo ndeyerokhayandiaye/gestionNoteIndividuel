@@ -1,0 +1,13 @@
+.dash-contanier{
+  display: flex;
+}
+.dash-contanier .left{
+  width: max-content;
+}
+.dash-contanier .right{
+  height: 100vh;
+  // background-color: red;
+  width: 100%;
+  padding: 50px;
+  overflow-y: auto;
+}

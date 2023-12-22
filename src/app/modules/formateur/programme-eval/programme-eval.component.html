@@ -1,0 +1,84 @@
+<!-- Programmer une Evaluation -->
+
+<div class="alert alert-primary text-center p-3" role="alert">
+    Programme d'evaluation
+</div>
+
+<div class="programme_evaluation m-5 container">
+    <div class="enrollHeader">
+        <h4>Programmer une Evaluation</h4>
+    </div>
+    <section class="enroll">
+        <form action="#" class="form">
+            <div class="input-box">
+                <label>ANNEE ACADEMIQUE</label>
+                <div class="column">
+                    <div class="select-box">
+                        <select name="select1" [(ngModel)]="anneeAcademic">
+                            <option value="2023-2024">2023-2024</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label>SEMESTRE</label>
+                <div class="column">
+                    <div class="select-box">
+                        <select name="select2" [(ngModel)]="semestre">
+                            <option value=" Semestre 1">Semestre 1</option>
+                            <option value="Semestre 2">Semestre 2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label>CLASSE</label>
+                    <div class="column">
+                        <div class="select-box">
+                            <select name="select3" [(ngModel)]="classe">
+                                <option value="Second">Second</option>
+                                <option value="Premiere">Premiére</option>
+                                <option value="Terminal">Terminal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="column">
+
+                        <div class="input-box">
+                            <label>Date Evaluation</label>
+                            <input name="date" type="date" placeholder="Date" [(ngModel)]="date" required />
+                        </div>
+                    </div>
+                    <div class="input-box subject">
+                        <label>Matière</label>
+                        <div class="column">
+                          <div class="select-box">
+                            <select name="select4" [(ngModel)]="matiere">
+                              <option *ngFor="let item of matieres; let i = index">{{item.libelle}}</option>
+                            </select>
+                          </div>
+                          <div class="select-box">
+                            <select name="select5" [(ngModel)]="type">
+                              <option value="Type" hidden>TYPE</option>
+                              <option value="Examen">Examen</option>
+                              <option value="Devoir">Devoir</option>
+                            </select>
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    <div class=" text-center d-flex">
+                        <button type="submit" class="btn btn-primary me-3" routerLink="/listeEvaluation"
+                            (click)="validationChamps()" [disabled]="!champsRemplis()">Programmer</button>
+                        <button type="button" class="btn btn-danger " (click)="annulerProgrammation()">Annuler</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </section>
+</div>
